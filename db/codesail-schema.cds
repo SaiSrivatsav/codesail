@@ -5,7 +5,8 @@ entity PipelineArtifacts : managed {
     key pipelineId: UUID;
         repoId: String @mandatory;
         repoName: String @mandatory;
-        branch: String @mandatory;
+        owner: String @mandatory;
+        branch: String default 'main';
         commitId: String;
         applicationId: String @mandatory;
         applicationName: String;
