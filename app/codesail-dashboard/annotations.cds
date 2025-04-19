@@ -1,0 +1,1 @@
+using codesail.srv.CodesailSrv as service from '../../srv/codesail-srv';
