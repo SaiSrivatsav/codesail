@@ -3,11 +3,14 @@ using { managed } from '@sap/cds/common';
 
 entity PipelineArtifacts : managed {
     key pipelineId: UUID;
+        pipelineName: String;
         repoId: String @mandatory;
         repoName: String @mandatory;
         owner: String @mandatory;
         branch: String default 'main';
         commitId: String;
+        commitTimestamp: DateTime;
+        commitMessage: String;
         applicationId: String @mandatory;
         applicationName: String;
         mtarFile: String @mandatory;
@@ -31,6 +34,7 @@ entity ReleaseArtifacts: managed{
     key pipelineId: Association to PipelineArtifacts;
     key stageId: Association to StagesArtifacts;
     key releaseId: UUID;
+    key stageReleaseId: UUID;
         subaccount: String;
         branch: String;
         commitId: String;

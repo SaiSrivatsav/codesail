@@ -5,8 +5,9 @@ class CodesailService extends cds.ApplicationService {
         const db = await cds.connect.to('db');
         const { PipelineArtifacts, StageArtifacts, StageVariables, ReleaseArtifacts } = this.entities;
 
-        this.on('POST', 'PipelineArtifacts', async(req) => {
+        this.on('CREATE', 'PipelineArtifacts', async(req) => {
             console.log("GIT has triggered me");
+            return "Triggered successfully";
         });
 
         return super.init();
