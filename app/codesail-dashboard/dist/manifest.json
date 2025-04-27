@@ -32,6 +32,7 @@
                     "action": "deploy",
                     "title": "{{cicd-deploy.flpTitle}}",
                     "subTitle": "{{cicd-deploy.flpSubtitle}}",
+                    "icon": "sap-icon://syntax",
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
@@ -57,12 +58,13 @@
         }
     },
     "sap.ui5": {
-        "flexEnabled": true,
+        "flexEnabled": false,
         "dependencies": {
             "minUI5Version": "1.134.1",
             "libs": {
                 "sap.m": {},
-                "sap.ui.core": {}
+                "sap.ui.core": {},
+                "sap.tnt": {}
             }
         },
         "contentDensities": {

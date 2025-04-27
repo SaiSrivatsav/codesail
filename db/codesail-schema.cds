@@ -11,11 +11,14 @@ entity PipelineArtifacts : managed {
         commitId: String;
         commitTimestamp: DateTime;
         commitMessage: String;
+        gitRunId: String;
+        artifactId: String;
         applicationId: String @mandatory;
         applicationName: String;
-        mtarFile: String @mandatory;
-        mtarFilePath: String @mandatory;
+        mtarFile: String ;
+        mtarFilePath: String;
         autoDeploy: Boolean default false;
+        buildLogs: LargeString;
         stages: Association to many StagesArtifacts on stages.pipelineId = $self;
         releases: Association to many ReleaseArtifacts on releases.pipelineId = $self;
 };
@@ -38,6 +41,8 @@ entity ReleaseArtifacts: managed{
         subaccount: String;
         branch: String;
         commitId: String;
+        artifactId: String;
+        gitRunId: String;
         lastRun: DateTime;
         stageDeploymentStatus: String;
         releaseStatus: String;

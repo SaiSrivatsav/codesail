@@ -9,6 +9,7 @@
 		"@cap-js/hana": "^1",
 		"@sap/cds": "^8",
 		"@sap/xssec": "^4",
+		"axios": "^1.9.0",
 		"express": "^4.21.2"
 	},
 	"devDependencies": {

@@ -1,6 +1,70 @@
 <mvc:View controllerName="ui.codesaildashboard.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+    <Page id="page" title="{i18n>title}" showHeader="false">
+        <content>
+        <tnt:ToolPage  id="toolPage">       
+                <tnt:header height="1.5rem">
+                    <tnt:ToolHeader>
+                        <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress">
+                            <layoutData>
+                                <OverflowToolbarLayoutData priority="NeverOverflow" />
+                            </layoutData>
+                        </Button>
+                        <Title text="Codesail" titleStyle="H1" textAlign="Left">
+                        </Title>
+                        <ToolbarSpacer/>
+                            <Button icon=""></Button>
+                        <ToolbarSpacer/>
+                    </tnt:ToolHeader>
+                </tnt:header>
+                <tnt:sideContent width="9rem">
+                    <tnt:SideNavigation width="9rem" id="sideNavigation" expanded="false" itemSelect="onitemSelect">
+                        <tnt:NavigationList>
+                            <tnt:NavigationListItem key="OverviewId" text="Overview" icon="sap-icon://SAP-icons-TNT/throughput-backlog" />
+                            <tnt:NavigationListItem key="PipelinesId" text="Pipelines" icon="sap-icon://BusinessSuiteInAppSymbols/icon-pipeline" />
+                            <tnt:NavigationListItem key="ReleasesId" text="Releases" icon="sap-icon://SAP-icons-TNT/splitter"/>
+                            <tnt:NavigationListItem key="VariablesId" text="Variable Groups" icon="sap-icon://SAP-icons-TNT/parts"/>
+                            <tnt:NavigationListItem key="ApprovalsId" text="Approvals" icon="sap-icon://employee-approvals" />
+                        </tnt:NavigationList>
+                    </tnt:SideNavigation>
+                </tnt:sideContent>
+                <tnt:mainContents >
+                 <NavContainer id="pageContainer">
+                    <pages>
+                            <Page id="OverviewId" visible="{=${visibility>/selectedKey} === 'OverviewId'}" enableScrolling="true" showHeader="false">
+                                <IllustratedMessage id="Overview-IllusId" illustrationType="sapIllus-NoActivities" title="No activities found" description="Run your pipelines to see your progress"></IllustratedMessage>
+                            </Page>
+                            <Page id="PipelinesId" visible="{=${visibility>/selectedKey} === 'PipelinesId'}" enableScrolling="true" showHeader="false">
+                                <IllustratedMessage id="Pipelines-IllusId" illustrationType="sapIllus-AddDimensions" title="No pipelines found" description="Create a pipeline to get started" >
+                                    <additionalContent>
+                                        <Button id="idCreatePipeline" text="New Pipeline" type="Emphasized" press="createPipeline"></Button>
+                                    </additionalContent>
+                                </IllustratedMessage>
+                            </Page>
+                            <Page id="ReleasesId" visible="{=${visibility>/selectedKey} === 'ReleasesId'}" enableScrolling="true" showHeader="false">
+                                <IllustratedMessage id="Releases-IllusId" illustrationType="sapIllus-AddDimensions" title="No releases found" description="Create releases to start the deployment">
+                                    <additionalContent>
+                                        <Button id="idCreateRelease" text="New Release" type="Emphasized" press="createRelease"></Button>
+                                    </additionalContent>
+                                </IllustratedMessage>
+                            </Page>
+                            <Page id="VariablesId" visible="{=${visibility>/selectedKey} === 'VariablesId'}" enableScrolling="true" showHeader="false">
+                               <IllustratedMessage id="Variables-IllusId" illustrationType="sapIllus-SimpleEmptyList" title="No Variable found" description="Create a variable group to manage your deployment processes">
+                                    <additionalContent>
+                                        <Button id="idCreateVariable" text="New Variable Group" type="Emphasized" press="createVariable"></Button>
+                                    </additionalContent>
+                               </IllustratedMessage>
+                            </Page>
+                            <Page id="ApprovalsId" visible="{=${visibility>/selectedKey} === 'ApprovalsId'}" enableScrolling="true" showHeader="false">
+                               <IllustratedMessage id="Approvals-IllusId" illustrationType="sapIllus-SimpleCheckMark" title="All caught up!" description="You have no pending approvals">
+                               </IllustratedMessage>
+                            </Page>
+                    </pages>        
+                </NavContainer>
+                </tnt:mainContents>
+            </tnt:ToolPage>
+        </content>
     </Page>
 </mvc:View>

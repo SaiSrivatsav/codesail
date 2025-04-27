@@ -1,0 +1,2 @@
+VCAP_SERVICES='{}'
+cds_requires='{"auth":{"strategy":"dummy","kind":"dummy"}}'
